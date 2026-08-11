@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2'),
+       url('/fonts/DepartureMono-Regular.woff') format('woff'),
+       url('/fonts/DepartureMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-raised: #1a1814;
+  --color-text: #d8d2c2;
+  --color-text-muted: #8a8578;
+  --color-border: #3a362e;
+  --color-accent: #b5651d;
+  --color-selection: #2b2620;
+
+  --theme: var(--color-bg);
+  --entry: var(--color-bg-raised);
+  --primary: var(--color-text);
+  --secondary: var(--color-text-muted);
+  --tertiary: var(--color-border);
+  --content: var(--color-text);
+  --code-block-bg: var(--color-bg-raised);
+  --code-bg: var(--color-bg-raised);
+  --border: var(--color-border);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Departure Mono', ui-monospace, monospace;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text);
+}
+
+.post-title, .entry-header h2, h1, h2, h3 {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Letterbox frame */
+.letterbox-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2.2vh;
+  background: var(--color-bg-raised);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.letterbox-bar.top {
+  top: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.letterbox-bar.bottom {
+  bottom: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+body {
+  padding-top: 2.2vh;
+  padding-bottom: 2.2vh;
+}
+
+.timecode {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.post-title {
+  letter-spacing: 0.08em;
+  font-size: 1.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Site nav */
+.site-nav {
+  position: fixed;
+  top: 2.2vh;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: var(--color-accent);
+}
+
+.nav-group {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0;
+  list-style: none;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  min-width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.nav-group:hover .nav-dropdown,
+.nav-group:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown li {
+  padding: 0.4rem 1rem;
+}
+
+.nav-dropdown a {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+body {
+  padding-top: calc(2.2vh + 3.2rem);
+}
+
+.site-nav {
+  align-items: center;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Homepage hero */
+.home-hero {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 1.5rem;
+}
+
+.site-title {
+  font-size: 2.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.home-nav {
+  position: static;
+  display: inline-flex;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Hide the fixed global nav specifically on the homepage */
+body.home .site-nav:not(.home-nav) {
+  display: none;
+}
+
+body.home {
+  padding-top: 2.2vh;
+}
+
+.home-rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.recent-list {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.recent-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-selection);
+}
+
+.recent-item a {
+  color: var(--color-text);
+  text-decoration: none;
+  flex: 1;
+}
+
+.recent-item a:hover {
+  color: var(--color-accent);
+}
+
+.recent-tag {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+body.home { padding-top: 2.2vh; }

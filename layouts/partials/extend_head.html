@@ -1,0 +1,25 @@
+<div class="letterbox-bar top"></div>
+<div class="letterbox-bar bottom"></div>
+
+{{ if not .IsHome }}
+<nav class="site-nav">
+  <a href="/" class="nav-home">Home</a>
+  <div class="nav-group">
+    <a href="/writing/">Writing</a>
+    <ul class="nav-dropdown">
+      <li><a href="/writing/travel/">Travel</a></li>
+      <li><a href="/writing/poetry/">Poetry</a></li>
+      <li><a href="/writing/fiction/">Fiction</a></li>
+      <li><a href="/writing/general/">General</a></li>
+    </ul>
+  </div>
+  <div class="nav-group">
+    <a href="/art/">Art</a>
+    <ul class="nav-dropdown">
+      <li><a href="/art/art/">Art</a></li>
+      <li><a href="/art/photography/">Photography</a></li>
+    </ul>
+  </div>
+  <a href="/about/">About</a>
+</nav>
+{{ end }}

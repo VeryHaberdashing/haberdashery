@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="home-hero">
+  <h1 class="site-title">{{ site.Title }}</h1>
+  <nav class="site-nav home-nav">
+    <a href="/">Home</a>
+    <div class="nav-group">
+      <a href="/writing/">Writing</a>
+      <ul class="nav-dropdown">
+        <li><a href="/writing/travel/">Travel</a></li>
+        <li><a href="/writing/poetry/">Poetry</a></li>
+        <li><a href="/writing/fiction/">Fiction</a></li>
+        <li><a href="/writing/general/">General</a></li>
+      </ul>
+    </div>
+    <div class="nav-group">
+      <a href="/art/">Art</a>
+      <ul class="nav-dropdown">
+        <li><a href="/art/art/">Art</a></li>
+        <li><a href="/art/photography/">Photography</a></li>
+      </ul>
+    </div>
+    <a href="/about/">About</a>
+  </nav>
+</div>
+
+<hr class="home-rule">
+
+<ul class="recent-list">
+  {{ range first 10 (where site.RegularPages "Type" "in" (slice "writing" "art")).ByDate.Reverse }}
+  <li class="recent-item">
+    <span class="timecode">{{ .Date | time.Format "2006.01.02 // 15:04" }}</span>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <span class="recent-tag">[{{ .Type }}]</span>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,12 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Haberdashery'
+theme = 'PaperMod'
+
+[params]
+	ShowReadingTime = true
+	ShowShareButtons = false
+	ShowPostNavLinks = true
+	ShowBreadCrumbs = true
+	ShowCodeCopyButtons = false
+	ShowFullTextinRSS = true
