@@ -10,3 +10,4 @@ theme = 'PaperMod'
 	ShowBreadCrumbs = true
 	ShowCodeCopyButtons = false
 	ShowFullTextinRSS = true
+copyright = 'The Haberdashery — Where odds meet ends, provided by a fool free of charge.'
