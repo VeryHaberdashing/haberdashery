@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$HOME/Documents/work/haberdashery"
+
+echo "Haberdashery — checking for changes..."
+
+if [[ -z $(git status --porcelain) ]]; then
+  echo "Nothing to update — working tree is clean."
+  exit 0
+fi
+
+git status --short
+
+read -rp "Commit message (leave blank for default): " msg
+if [[ -z "$msg" ]]; then
+  msg="Update site content $(date '+%Y-%m-%d %H:%M')"
+fi
+
+git add .
+git commit -m "$msg"
+
+echo "Pushing..."
+git push
+
+echo "Done — check the Actions tab for build status."
