@@ -45,7 +45,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://haberdashery.online/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
