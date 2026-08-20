@@ -234,3 +234,10 @@ body.home {
 }
 
 body.home { padding-top: 2.2vh; }
+
+.haberdash-audio {
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem 0;
+  filter: invert(1) hue-rotate(180deg);
+}
