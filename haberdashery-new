@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -e
+
+# Must be run from the Hugo project root
+if [[ ! -f "hugo.toml" ]]; then
+  echo "Error: run this from the Hugo project root (hugo.toml not found here)."
+  exit 1
+fi
+
+echo "Haberdashery — new content"
+echo ""
+echo "  1) Writing — Travel"
+echo "  2) Writing — Poetry"
+echo "  3) Writing — Fiction"
+echo "  4) Writing — General"
+echo "  5) Art"
+echo "  6) Photography"
+echo "  7) Audio"
+echo ""
+read -rp "Select a number: " choice
+
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//'
+}
+
+new_writing_post() {
+  local section="$1"
+  read -rp "Title: " title
+  local slug
+  slug=$(slugify "$title")
+  local dir="content/writing/${section}"
+  local file="${dir}/${slug}.md"
+
+  if [[ -f "$file" ]]; then
+    echo "A post with that slug already exists: $file"
+    exit 1
+  fi
+
+  mkdir -p "$dir"
+  cat > "$file" << EOF
+---
+title: "${title}"
+date: $(date '+%Y-%m-%d')
+draft: false
+---
+
+EOF
+  nvim "$file"
+}
+
+new_media_post() {
+  local section="$1"   # art/art, art/photography, or audio
+  local kind="$2"      # "image" or "audio"
+
+  read -rp "Title: " title
+  local slug
+  slug=$(slugify "$title")
+  local dir="content/${section}/${slug}"
+
+  if [[ -d "$dir" ]]; then
+    echo "A post with that slug already exists: $dir"
+    exit 1
+  fi
+
+  read -rp "Path to source file: " srcfile
+  srcfile="${srcfile/#\~/$HOME}"
+
+  if [[ ! -f "$srcfile" ]]; then
+    echo "File not found: $srcfile"
+    exit 1
+  fi
+
+  mkdir -p "$dir"
+  local filename
+  filename=$(basename "$srcfile")
+  cp "$srcfile" "${dir}/${filename}"
+
+  local file="${dir}/index.md"
+
+  if [[ "$kind" == "image" ]]; then
+    cat > "$file" << EOF
+---
+title: "${title}"
+date: $(date '+%Y-%m-%d')
+draft: false
+---
+
+![${title}](${filename})
+EOF
+  else
+    cat > "$file" << EOF
+---
+title: "${title}"
+date: $(date '+%Y-%m-%d')
+draft: false
+---
+
+{{< audio src="${filename}" >}}
+EOF
+  fi
+
+  nvim "$file"
+}
+
+case "$choice" in
+  1) new_writing_post "travel" ;;
+  2) new_writing_post "poetry" ;;
+  3) new_writing_post "fiction" ;;
+  4) new_writing_post "general" ;;
+  5) new_media_post "art/art" "image" ;;
+  6) new_media_post "art/photography" "image" ;;
+  7) new_media_post "audio" "audio" ;;
+  *) echo "Invalid selection." ; exit 1 ;;
+esac
+
+echo ""
+echo "Done editing. Run haberdasher-update when ready to publish."
