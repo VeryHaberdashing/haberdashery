@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# Must be run from the Hugo project root
 if [[ ! -f "hugo.toml" ]]; then
   echo "Error: run this from the Hugo project root (hugo.toml not found here)."
   exit 1
@@ -49,8 +48,8 @@ EOF
 }
 
 new_media_post() {
-  local section="$1"   # art/art, art/photography, or audio
-  local kind="$2"      # "image" or "audio"
+  local section="$1"
+  local kind="$2"
 
   read -rp "Title: " title
   local slug
@@ -62,18 +61,40 @@ new_media_post() {
     exit 1
   fi
 
-  read -rp "Path to source file: " srcfile
-  srcfile="${srcfile/#\~/$HOME}"
+  local repo="Art_Audio_repo"
+  mkdir -p "$repo"
 
-  if [[ ! -f "$srcfile" ]]; then
-    echo "File not found: $srcfile"
+  local files=()
+  while IFS= read -r -d '' f; do
+    files+=("$f")
+  done < <(find "$repo" -maxdepth 1 -type f -print0 | sort -z)
+
+  if [[ ${#files[@]} -eq 0 ]]; then
+    echo "No files found in ${repo}/ — drop a file there first."
     exit 1
   fi
+
+  echo ""
+  echo "Files in ${repo}/:"
+  local i=1
+  for f in "${files[@]}"; do
+    echo "  ${i}) $(basename "$f")"
+    ((i++))
+  done
+  echo ""
+  read -rp "Select a file number: " fchoice
+
+  if ! [[ "$fchoice" =~ ^[0-9]+$ ]] || (( fchoice < 1 || fchoice > ${#files[@]} )); then
+    echo "Invalid selection."
+    exit 1
+  fi
+
+  local srcfile="${files[$((fchoice-1))]}"
 
   mkdir -p "$dir"
   local filename
   filename=$(basename "$srcfile")
-  cp "$srcfile" "${dir}/${filename}"
+  mv "$srcfile" "${dir}/${filename}"
 
   local file="${dir}/index.md"
 
