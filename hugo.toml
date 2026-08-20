@@ -1,4 +1,4 @@
-baseURL = 'https://veryhaberdashing.github.io/haberdashery/'
+baseURL = 'https://yourdomain.com/'
 languageCode = 'en-us'
 title = 'Haberdashery'
 theme = 'PaperMod'
