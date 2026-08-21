@@ -283,3 +283,8 @@ body.home { padding-top: 2.2vh; }
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+/* Lock to light mode — hide toggle, force light theme */
+.theme-toggle {
+  display: none !important;
+}
