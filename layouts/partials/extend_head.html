@@ -1,7 +1,6 @@
 <div class="letterbox-bar top"></div>
 <div class="letterbox-bar bottom"></div>
 
-<script>document.documentElement.setAttribute('data-theme', 'light');</script>
 
 {{ if not .IsHome }}
 <nav class="site-nav">
@@ -23,6 +22,8 @@
     </ul>
   </div>
   <a href="{{ "audio/" | absURL }}">Audio</a>
+  <a href="{{ "commission/" | absURL }}">Commission</a>
+  <a href="{{ "links/" | absURL }}">Links</a>
   <a href="{{ "about/" | absURL }}">About</a>
 </nav>
 {{ end }}
