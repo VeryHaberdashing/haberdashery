@@ -8,4 +8,4 @@ Are you looking for some writing? Poetry? Essays? Articles? Short stories? What 
 
 No idea too big or small, Pricing and timelines vary on a project to project basis, so the best way to find out is to get in touch with me at my email: haberdashing@proton.me, or reach out to me over Twitter at @_haberdasher.
 
-Or head on over to my [Kofi Commissions page](www.ko-fi.com/haberdasher) for more information on standard options! 
+Or head on over to my [Kofi Commissions page](https://www.ko-fi.com/haberdasher) for more information on standard options! 

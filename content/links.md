@@ -6,11 +6,11 @@ draft = false
 
 You can find the scattered pieces of my brain on various platforms.
 
-[Twitter/X](x.com/_haberdasher)
-[Website](haberdashery.online)
-[Print Store](www.inprnt.com/gallery/haberdasher/)
-[Tips & Commissions](www.ko-fi.com/haberdasher)
-[Substack](www.substack.com/@thehaberdashing)
-[Artstation Coming Soon](www.google.com)
+- [Twitter/X](https://www.x.com/_haberdasher)
+- [Website](https://haberdashery.online)
+- [Print Store](https://www.inprnt.com/gallery/haberdasher/)
+- [Tips & Commissions](https://www.ko-fi.com/haberdasher)
+- [Substack](https://www.substack.com/@thehaberdashing)
+- [Artstation Coming Soon](www.google.com)
 
 
