@@ -27,11 +27,12 @@
 <hr class="home-rule">
 
 <ul class="recent-list">
-  {{ range first 10 (where site.RegularPages "Type" "in" (slice "writing" "art")).ByDate.Reverse }}
+  {{ $pages := where site.RegularPages "Section" "!=" "" }}
+  {{ range first 10 ($pages.ByDate.Reverse) }}
   <li class="recent-item">
     <span class="timecode">{{ .Date | time.Format "2006.01.02 // 15:04" }}</span>
     <a href="{{ .Permalink }}">{{ .Title }}</a>
-    <span class="recent-tag">[{{ .Type }}]</span>
+    <span class="recent-tag">[{{ .Section }}]</span>
   </li>
   {{ end }}
 </ul>
