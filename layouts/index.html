@@ -30,7 +30,7 @@
   {{ $pages := where site.RegularPages "Section" "!=" "" }}
   {{ range first 10 ($pages.ByDate.Reverse) }}
   <li class="recent-item">
-    <span class="timecode">{{ .Date | time.Format "2006.01.02 // 15:04" }}</span>
+    <span class="timecode">{{ .Date | time.Format "2006.01.02" }}</span>
     <a href="{{ .Permalink }}">{{ .Title }}</a>
     <span class="recent-tag">[{{ .Section }}]</span>
   </li>

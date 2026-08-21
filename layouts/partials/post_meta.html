@@ -1,6 +1,6 @@
 {{- $scratch := newScratch }}
 {{- if not .Date.IsZero -}}
-  {{- $scratch.Add "meta" (slice ((printf "<span class='timecode' title='%s'>%s</span>" (.Date) (.Date | time.Format "2006.01.02 // 15:04")) | safeHTML)) }}
+  {{- $scratch.Add "meta" (slice ((printf "<span class='timecode' title='%s'>%s</span>" (.Date) (.Date | time.Format "2006.01.02")) | safeHTML)) }}
 {{- end }}
 {{- if (.Param "ShowReadingTime") -}}
   {{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
