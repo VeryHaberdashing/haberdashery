@@ -1,36 +1,14 @@
 {{ define "main" }}
 <h1 class="post-title">{{ .Title }}</h1>
-
-{{ if .IsSection }}
-  {{ if gt (len .Sections) 0 }}
-  <!-- Top-level /art/ overview: show subsections as tiles -->
-  <div class="gallery-grid">
-    {{ range .Sections }}
-      {{ $latest := index .RegularPages 0 }}
-      <a href="{{ .Permalink }}" class="gallery-tile">
-        {{ if $latest }}
-          {{ $img := $latest.Resources.ByType "image" | first 1 }}
-          {{ range $img }}
-            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
-          {{ end }}
-        {{ end }}
-        <span class="gallery-tile-title">{{ .Title }}</span>
-      </a>
-    {{ end }}
-  </div>
-  {{ else }}
-  <!-- Subsection (Art or Photography): show individual posts as tiles -->
-  <div class="gallery-grid">
-    {{ range .Pages }}
-      {{ $img := .Resources.ByType "image" | first 1 }}
-      <a href="{{ .Permalink }}" class="gallery-tile">
-        {{ range $img }}
-          <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
-        {{ end }}
-        <span class="gallery-tile-title">{{ .Title }}</span>
-      </a>
-    {{ end }}
-  </div>
+<div class="gallery-grid">
+  {{ range .Pages }}
+    {{ $img := .Resources.ByType "image" | first 1 }}
+    <a href="{{ .Permalink }}" class="gallery-tile">
+      {{ range $img }}
+        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
+      {{ end }}
+      <span class="gallery-tile-title">{{ .Title }}</span>
+    </a>
   {{ end }}
-{{ end }}
+</div>
 {{ end }}
