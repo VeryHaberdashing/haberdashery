@@ -1,7 +1,7 @@
 +++
 title = 'Links'
 date = 2026-08-21T14:25:41+01:00
-draft = true
+draft = false 
 +++
 
 You can find the scattered pieces of my brain on various platforms.
