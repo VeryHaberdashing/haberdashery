@@ -32,7 +32,7 @@
   <li class="recent-item">
     <span class="timecode">{{ .Date | time.Format "2006.01.02" }}</span>
     <a href="{{ .Permalink }}">{{ .Title }}</a>
-    <span class="recent-tag">[{{ .Section }}]</span>
+    <span class="recent-tag">[{{ (.Parent).Title | lower }}]</span>
   </li>
   {{ end }}
 </ul>
