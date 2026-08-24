@@ -3,6 +3,9 @@ title: "Untitled"
 date: 2026-08-23
 draft: false
 ---
+
+<pre class="poem">
+
 Dawn breaks in a way only known to sea ice
 	under a seasons change;
 		Under the knife known by its edge;
@@ -31,3 +34,5 @@ The night is her property;
 
 						
 					And you will learn to love me.
+
+</pre>
