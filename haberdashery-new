@@ -36,14 +36,30 @@ new_writing_post() {
   fi
 
   mkdir -p "$dir"
-  cat > "$file" << EOF
+
+  if [[ "$section" == "poetry" ]]; then
+    cat > "$file" << EOF
 ---
 title: "${title}"
-date: $(date '+%Y-%m-%d')
+date: $(date '+%Y-%m-%dT%H:%M:%S%:z')
+draft: false
+---
+
+<pre class="poem">
+
+</pre>
+EOF
+  else
+    cat > "$file" << EOF
+---
+title: "${title}"
+date: $(date '+%Y-%m-%dT%H:%M:%S%:z')
 draft: false
 ---
 
 EOF
+  fi
+
   nvim "$file"
 }
 
@@ -102,7 +118,7 @@ new_media_post() {
     cat > "$file" << EOF
 ---
 title: "${title}"
-date: $(date '+%Y-%m-%d')
+date: $(date '+%Y-%m-%dT%H:%M:%S%:z')
 draft: false
 ---
 
@@ -112,7 +128,7 @@ EOF
     cat > "$file" << EOF
 ---
 title: "${title}"
-date: $(date '+%Y-%m-%d')
+date: $(date '+%Y-%m-%dT%H:%M:%S%:z')
 draft: false
 ---
 
