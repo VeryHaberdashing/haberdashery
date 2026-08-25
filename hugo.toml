@@ -11,3 +11,8 @@ theme = 'PaperMod'
 	ShowCodeCopyButtons = false
 	ShowFullTextinRSS = true
 copyright = 'The Haberdashery — Where odds meet ends, provided by a fool free of charge.'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
